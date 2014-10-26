@@ -3,7 +3,7 @@ function love.conf(t)
 	--t.title = "Thompson Was a Clone"
 	--t.author = "Guard13007"
 	t.version = "0.9.1"
-	t.console = false
+	t.console = true --change for release!!
 
 	t.window.title = "Thompson Was a Clone"
 	--t.window.icon = nil
@@ -13,7 +13,7 @@ function love.conf(t)
 	t.window.resizable = false
 	t.window.fullscreen = false
 
-	--t.window.vsync = false
+	t.window.vsync = true --may change?
 	t.window.fsaa = 0
 	t.window.display = 1
 	t.window.highdpi = false
