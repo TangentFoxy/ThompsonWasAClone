@@ -1,4 +1,6 @@
 function love.load()
+	require "lightWorldRectangleFix"
+
 	local LightWorld = require "lib.light_world"
 	lightWorld = LightWorld({
 		drawBackground = drawBackground,
@@ -12,40 +14,12 @@ function love.load()
 
 	thompson = {
 		color = {255, 0, 0},
-		--[[x = 50,
+		x = 50,
 		y = 50,
 		w = 17,
-		h = 27]]
-		x = 500,
-		y = 50,
-		w = 170,
 		h = 27
 	}
-	thompson.shadow = lightWorld:newRectangle(thompson.x + thompson.w / 2, thompson.y + thompson.h / 2, thompson.w, thompson.h)
-	-- work arounds for broken constructor
-	thompson.shadow.ox = thompson.w / 2--* 2--/ 2
-	thompson.shadow.oy = thompson.h / 2--* 2--/ 2
-	thompson.shadow.width = thompson.w
-	thompson.shadow.height = thompson.h
-	thompson.shadow.data = {
-		--8 values, 4 x/y pairs, start at top left, clockwise
-		thompson.x,
-		thompson.y,
-		thompson.x + thompson.w,
-		thompson.y,
-		thompson.x + thompson.w,
-		thompson.y + thompson.h,
-		thompson.x,
-		thompson.y + thompson.h
-	}
-
-	-- temp logging for attempt to resolve issues
-	for k,v in pairs(thompson.shadow) do
-		print(k.."="..tostring(v))
-	end
-	for k,v in pairs(thompson.shadow.data) do
-		print(k.."="..tostring(v))
-	end
+	thompson.shadow = lightWorldRectangleFix(lightWorld, thompson.x, thompson.y, thompson.w, thompson.h)
 end
 
 function love.update(dt)
