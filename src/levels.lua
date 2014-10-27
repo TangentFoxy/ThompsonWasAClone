@@ -1,4 +1,4 @@
-local LightWorld = require "lib.light_world"
+local LightWorld = require "lib.LightWorld"
 require "lightWorldRectangleFix"
 
 local Object = {}
